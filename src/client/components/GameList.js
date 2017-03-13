@@ -8,8 +8,7 @@ var GameList = ({games}) => (
   </div>
 );
 
-// PropTypes tell other developers what `props` a component expects
-// Warnings will be shown in the console when the defined rules are violated
+// Show warnings in the console when the defined props are not included
 GameList.propTypes = {
   games: React.PropTypes.array.isRequired
 };
