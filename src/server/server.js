@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var app = express();
@@ -10,6 +11,10 @@ mongoose.connect('mongodb://localhost/game-hype-list');
 require('./config/middleware.js')(app, express);
 require('./config/routes.js')(app, express);
 
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(express.static(__dirname + '/../../client'));
+
 // start listening to requests on port 3000
 app.listen(3000);
 
@@ -20,5 +25,3 @@ module.exports = app;
 
 
 // Serve static files here!
-
-// Use CDN to serve react files
