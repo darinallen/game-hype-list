@@ -1,10 +1,12 @@
+var React = require('react');
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentVideo: exampleVideoData[0],
-      videoList: exampleVideoData
+
     };
+    this.name = 'Darin';
   }
 
   render() {
@@ -12,7 +14,7 @@ class App extends React.Component {
     return (
       <div>
         <div>
-          <h1>This is {name}'s React app!</h1>
+          <h1>This is {this.name}'s React app!</h1>
         </div>
       </div>
     );
