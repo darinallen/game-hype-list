@@ -7,14 +7,17 @@ var app = express();
 // connect to mongo database named "game-hype-list"
 mongoose.connect('mongodb://localhost/game-hype-list');
 
+// Set what we are listening on.
+app.set('port', 3000);
 
-
-// configure server with middleware and routing
-require('./config/middleware.js')(app, express);
-require('./config/routes.js')(app, express);
-
+// Set up middleware
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+// Set up requests
+app.get('/', FILL_ME_IN);
+
+app.post('/', FILL_ME_IN);
 
 // Serve the client files
 app.use(express.static(__dirname + '/../../client'));
@@ -24,8 +27,3 @@ app.listen(3000);
 
 // export our app for testing and flexibility, required by index.js
 module.exports = app;
-
-
-
-
-// Serve static files here!
