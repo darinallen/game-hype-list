@@ -7,12 +7,16 @@ var app = express();
 // connect to mongo database named "game-hype-list"
 mongoose.connect('mongodb://localhost/game-hype-list');
 
-// configure our server with all the middleware and routing
+
+
+// configure server with middleware and routing
 require('./config/middleware.js')(app, express);
 require('./config/routes.js')(app, express);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+// Serve the client files
 app.use(express.static(__dirname + '/../../client'));
 
 // start listening to requests on port 3000
