@@ -21,4 +21,4 @@
   > "The Video Game Hype List changed my life!" -Potentially you, after using the Video Game Hype List
 
 ## Closing and Call to Action ##
-  > Visit the Video Game Hyp List website now and get started!
+  > Visit the Video Game Hype List website now and get started!
