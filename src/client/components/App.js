@@ -16,7 +16,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Video Game Hype List</h1>
-        <GameList games={this.state.gameList} />
+        {/* <GameList games={this.state.gameList} /> */}
       </div>
     );
   }

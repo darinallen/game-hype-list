@@ -1,3 +1,4 @@
+var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
@@ -14,13 +15,17 @@ app.set('port', 3000);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-// Set up requests
-app.get('/', FILL_ME_IN);
-
-app.post('/', FILL_ME_IN);
-
 // Serve the client files
-app.use(express.static(__dirname + '/../../client'));
+app.use(express.static(__dirname + '/../client'));
+
+// Set up requests
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, '/../client/index.html'))
+});
+
+app.post('/', function(req, res) {
+
+});
 
 // start listening to requests on port 3000
 app.listen(3000);
