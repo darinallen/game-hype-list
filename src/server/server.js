@@ -17,7 +17,7 @@ var app = express();
 
 // Set what we are listening on.
 app.set('port', process.env.PORT || 3000);
-app.set('ip', process.env.IP || 'http://localhost';)
+app.set('ip', process.env.IP || 'http://localhost');
 
 // Set up middleware
 app.use(bodyParser.urlencoded({extended: true}));
