@@ -1,4 +1,5 @@
 import React from 'react';
+import GameListEntry from './GameListEntry.js';
 
 var GameList = ({games}) => (
   <div className="game-list">
@@ -14,3 +15,5 @@ var GameList = ({games}) => (
 GameList.propTypes = {
   games: React.PropTypes.array.isRequired
 };
+
+export default GameList;

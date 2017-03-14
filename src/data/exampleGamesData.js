@@ -26,4 +26,4 @@ var exampleGames = [
   }
 ];
 
-export { exampleGames };
+export default exampleGames;

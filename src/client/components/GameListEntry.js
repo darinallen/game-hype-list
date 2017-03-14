@@ -1,6 +1,6 @@
 import React from 'react';
 
-var VideoListEntry = ({game}) => (
+var GameListEntry = ({game}) => (
   <div className="game-list-entry">
     <div className="game-title">{game.title}</div>
     <div className="game-release-date">{game.releaseDate}</div>
@@ -14,3 +14,5 @@ var VideoListEntry = ({game}) => (
 GameList.propTypes = {
   game: React.PropTypes.array.isRequired
 };
+
+export default GameListEntry;
