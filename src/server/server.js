@@ -17,6 +17,7 @@ var app = express();
 
 // Set what we are listening on.
 app.set('port', process.env.PORT || 3000);
+app.set('ip', process.env.IP || 'http://localhost';)
 
 // Set up middleware
 app.use(bodyParser.urlencoded({extended: true}));
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, '/../../build')));
 
 // Set up requests
 app.get('/', function(req, res) {
+  console.log('Successful GET request!');
   res.sendFile(path.join(__dirname, '/../../build/index.html'));
 });
 
@@ -36,7 +38,7 @@ app.get('/', function(req, res) {
 
 // start listening to requests on port 3000
 app.listen(app.get('port'), function() {
-    console.info('Express server started at http://localhost:' + app.get('port'));
+    console.info('Express server started at ' + app.get('ip') + ':' + app.get('port'));
 });
 
 // export our app for testing and flexibility, required by index.js
