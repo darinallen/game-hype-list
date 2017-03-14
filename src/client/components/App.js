@@ -1,9 +1,9 @@
 import React from 'react';
 import exampleGames from '../../data/exampleGamesData';
-// import GameList from './GameList.js';
+import GameList from './GameList.js';
 
 console.log('exampleGames: ', exampleGames);
-// console.log('GameList: ', GameList);
+console.log('GameList: ', GameList);
 
 class App extends React.Component {
   constructor(props) {

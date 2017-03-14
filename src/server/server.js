@@ -1,15 +1,15 @@
-import path from 'path';
-import express from 'express';
-import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
+var path = require('path');
+var express = require('express');
+var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var app = express();
 
 // connect to mongo database named "game-hype-list"
-mongoose.connect('mongodb://localhost/game-hype-list');
+// mongoose.connect('mongodb://localhost/game-hype-list');
 
 // Set what we are listening on.
-app.set('port', process.env.PORT || 8081);
+app.set('port', process.env.PORT || 3000);
 
 // Set up middleware
 app.use(bodyParser.urlencoded({extended: true}));
@@ -23,9 +23,9 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '/../../build/index.html'));
 });
 
-app.post('/', function(req, res) {
-
-});
+// app.post('/', function(req, res) {
+//
+// });
 
 // start listening to requests on port 3000
 app.listen(app.get('port'), function() {
@@ -33,4 +33,4 @@ app.listen(app.get('port'), function() {
 });
 
 // export our app for testing and flexibility, required by index.js
-export { app };
+module.exports = app;
