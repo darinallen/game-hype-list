@@ -8,3 +8,5 @@ var GameSubmit = (props) => (
     <button className="btn-submit">Submit</button>
   </div>
 );
+
+export default GameSubmit;
