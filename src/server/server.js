@@ -23,16 +23,16 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 // Serve the client files
-app.use(express.static(path.join(__dirname, '/../../build/transformed.js')));
+app.use(express.static(path.join(__dirname, '/../../build')));
 
 // Set up requests
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '/../../build/index.html'));
 });
 
-app.post('/', function(req, res, next) {
-  mongoose.model('games', GamesSchema);
-});
+// app.post('/', function(req, res, next) {
+//   mongoose.model('games', GamesSchema);
+// });
 
 // start listening to requests on port 3000
 app.listen(app.get('port'), function() {
