@@ -1,4 +1,4 @@
-module.exports = [
+var exampleGames = [
   {
     title: 'Mass Effect: Andromeda',
     releaseDate: 'March 21, 2017',
@@ -25,3 +25,5 @@ module.exports = [
     platform: 'Xbox One'
   }
 ];
+
+export { exampleGames };
