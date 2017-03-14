@@ -1,13 +1,11 @@
-var Q = require('q');
 var mongoose = require ('mongoose');
 
-var GamesSchema = new mongoose.Schema({
+var GameSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
     unique: true
   },
-
   date: {
     type: String,
     required: true
@@ -18,6 +16,6 @@ var GamesSchema = new mongoose.Schema({
   }
 });
 
-var gamesSchema = mongoose.model('games', GamesSchema);
+var Game = mongoose.model('game', GameSchema);
 
-modules.export = gamesSchema;
+modules.export = Game;
