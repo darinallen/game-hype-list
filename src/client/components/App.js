@@ -1,6 +1,7 @@
 import React from 'react';
 import exampleGames from '../../data/exampleGamesData';
 import GameList from './GameList';
+import GameSubmit from './GameSubmit';
 
 console.log('GameList Component: ', GameList);
 class App extends React.Component {
@@ -16,6 +17,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Video Game Hype List</h1>
+        <GameSubmit />
         <GameList games={this.state.gameList} />
       </div>
     );

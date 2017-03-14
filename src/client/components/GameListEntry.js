@@ -1,7 +1,13 @@
 import React from 'react';
 var GameListEntry = ({game}) => (
-  <div className="game-list-entry">
-    {game.title}
+  <div className="container">
+    <div className="game-list-entry">
+      <div classname="game-platform-img">
+        <img src= {game.platformImg}/>
+      </div>
+      <div className="game-title">{game.title}</div>
+      <div className="game-release-date">{game.releaseDate}</div>
+    </div>
   </div>
 );
 

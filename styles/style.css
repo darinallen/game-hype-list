@@ -1,29 +1,40 @@
 body {
   background: #f1f1f1;
+  font-family: sans-serif;
 }
 
 .game-submit {
+  padding-bottom: 20px;
+}
 
+.btn-submit {
+  padding-left: 10px;
 }
 
 .game-submit-form {
-
+  padding-bottom: 20px;
 }
 
 .game-list {
 
 }
 
-.game-list-entry {
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #c3c3c3;
+}
 
+.game-list-entry {
+  margin: 10px;
 }
 
 .game-title {
-
+  font-weight: bold;
 }
 
 .game-release-date {
-
+  font-style: italic;
 }
 
 .game-platform {
@@ -31,5 +42,5 @@ body {
 }
 
 .game-platform-img {
-  
+
 }
