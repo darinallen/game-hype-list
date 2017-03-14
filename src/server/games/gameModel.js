@@ -13,6 +13,10 @@ var GameSchema = new mongoose.Schema({
   platform: {
     type: String,
     required: true
+  },
+  platformImg: {
+    type: String,
+    require: true
   }
 });
 

@@ -8,19 +8,38 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameList: gameData.exampleGames
-      value: '';
+      gameList: gameData.exampleGames,
+      // title: '',
+      // date: '',
+      // platform: ''
     };
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    alert('A value was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
+  // handleSubmit(event) {
+  //   event.preventDefault();
+  //   var gameList = this.state.gameList;
+  //   var title = this.state.title;
+  //   var date = this.state.date;
+  //   var platform = this.state.platform;
+  //
+  //   this.props.onGameSubmit({title: title, date: date, platform: platform});
+  //
+  //   this.setState({
+  //     title: '',
+  //     date: '',
+  //     platform: ''
+  //   });
+  // }
+  //
+  // setValue: function(field, event) {
+  //   var object = {};
+  //   object[field] = event.target.value;
+  //   this.setState()
+  // }
+  //
+  // handleChange(event) {
+  //   this.setState({value: event.target.value});
+  // }
 
   render() {
     return (

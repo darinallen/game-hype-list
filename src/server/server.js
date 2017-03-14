@@ -7,6 +7,22 @@ var Game = require('./games/gameModel.js');
 var gameData = require('../data/exampleGamesData.js');
 var app = express();
 
+// Create a sample game
+Game.create({
+  id: 6,
+  title: 'Xenoblade Chronicles 2',
+  date: 'Fall, 2017',
+  platform: 'switch',
+  platformImg: 'https://dl.dropboxusercontent.com/u/6695849/mvp/switch.png'
+}, function (err, game) {
+  if (err) {
+    console.log('err: ', err)
+  } else {
+    console.log('game: ', game)
+  }
+});
+
+
 // Mongo ahoy!
 // connect to mongo database named "game-hype-list"
 if(app.get('env') === 'development') {
@@ -42,20 +58,25 @@ app.get('/', function(req, res) {
 // });
 
 app.post('/', function(req, res, next) {
-  console.log('request: ', req.body);
-  if(req.body.platform === 'pc') {
-    req.body.platformImg = 'https://dl.dropboxusercontent.com/u/6695849/mvp/pc.png';
-  } else if (req.body.platform === 'playstation') {
-    req.body.platformImg = 'https://dl.dropboxusercontent.com/u/6695849/mvp/playstation.png';
-  } else if (req.body.platform === 'xbox') {
-    req.body.platformImg = 'https://dl.dropboxusercontent.com/u/6695849/mvp/xbox.png';
-  } else if (req.body.platform === 'switch') {
-    req.body.platformImg = 'https://dl.dropboxusercontent.com/u/6695849/mvp/switch.png';
-  }
-  gameData.exampleGames.push(req.body);
-  console.log('gameData: ', gameData.exampleGames);
+  // console.log('request: ', req.body);
+  // if(req.body.platform === 'pc') {
+  //   req.body.platformImg = 'https://dl.dropboxusercontent.com/u/6695849/mvp/pc.png';
+  // } else if (req.body.platform === 'playstation') {
+  //   req.body.platformImg = 'https://dl.dropboxusercontent.com/u/6695849/mvp/playstation.png';
+  // } else if (req.body.platform === 'xbox') {
+  //   req.body.platformImg = 'https://dl.dropboxusercontent.com/u/6695849/mvp/xbox.png';
+  // } else if (req.body.platform === 'switch') {
+  //   req.body.platformImg = 'https://dl.dropboxusercontent.com/u/6695849/mvp/switch.png';
+  // }
+  // gameData.exampleGames.push(req.body);
+  // console.log('gameData: ', gameData.exampleGames);
 
-  // mongoose.model('games', GamesSchema);
+  gameController.addGame(req, res, function() {
+    gameController.allGames(req, res, function() {
+      console.log('req.body: ', req.body);
+    });
+  });
+
   // post game then run the get request
 });
 

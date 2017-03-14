@@ -16,14 +16,17 @@ module.exports = {
   },
 
   addGame: function(req, res, next) {
+    console.log('req.body: ', req.body);
     var newGame = {
       title: req.body.title,
-      date: req.body.releaseDate,
-      platform: req.body.platform
+      date: req.body.date,
+      platform: req.body.platform,
+      platformImg: 'https://dl.dropboxusercontent.com/u/6695849/mvp/switch.png'
     }
     createGame(newGame)
       .then(function(createdGame) {
-        if(game) {
+        if(createdGame) {
+          console.log('createGame: ', createdGame);
           res.json(createdGame);
         }
       })
