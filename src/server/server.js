@@ -8,12 +8,12 @@ var Game = require('./games/gameModel.js');
 var app = express();
 
 // connect to mongo database named "game-hype-list"
-mongoose.connect('mongodb://localhost/game-hype-list');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  // we're connected!
-});
+// mongoose.connect('mongodb://localhost/game-hype-list');
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', function() {
+//   // we're connected!
+// });
 
 // Set what we are listening on.
 app.set('port', process.env.PORT || 3000);
