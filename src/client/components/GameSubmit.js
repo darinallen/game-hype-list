@@ -1,7 +1,8 @@
 import React from 'react';
+var gameData = require('../../data/exampleGamesData.js');
 
 var GameSubmit = (props) => (
-  <form className="game-submit-form">
+  <form className="game-submit-form" method="post">
     <fieldset>
       <legend>Enter a Game You Are Hyped to Play!</legend>
       Game Title:<br />

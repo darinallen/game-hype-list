@@ -2,7 +2,7 @@ import React from 'react';
 var GameListEntry = ({game}) => (
   <div className="container">
     <div className="game-list-entry">
-      <div classname="game-platform-img">
+      <div className="game-platform-img">
         <img src= {game.platformImg}/>
       </div>
       <div className="game-title">{game.title}</div>

@@ -1,18 +1,28 @@
 import React from 'react';
-import exampleGames from '../../data/exampleGamesData';
+var gameData = require('../../data/exampleGamesData');
 import GameList from './GameList';
 import GameSubmit from './GameSubmit';
 
-console.log('GameList Component: ', GameList);
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameList: exampleGames
+      gameList: gameData.exampleGames
+      value: '';
     };
   }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('A value was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
+
   render() {
-    console.log('gameList: ', this.state.gameList);
     return (
       <div>
         <h1>Video Game Hype List</h1>
@@ -23,3 +33,6 @@ class App extends React.Component {
   }
 }
 export default App;
+
+
+// set state of gameList

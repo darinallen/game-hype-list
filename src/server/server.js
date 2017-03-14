@@ -4,13 +4,16 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var gameController = require('./games/gameController.js');
 var Game = require('./games/gameModel.js');
-
+var gameData = require('../data/exampleGamesData.js');
 var app = express();
 
 // Mongo ahoy!
 // connect to mongo database named "game-hype-list"
-// mongoose.connect('mongodb://localhost/game-hype-list');
-// var db = mongoose.connection;
+if(app.get('env') === 'development') {
+  mongoose.connect('mongodb://localhost/game-hype-list');
+  var db = mongoose.connection;
+}
+
 // db.on('error', console.error.bind(console, 'connection error:'));
 // db.once('open', function() {
 //   // we're connected!
@@ -33,9 +36,28 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '/../../build/index.html'));
 });
 
-// app.post('/', function(req, res, next) {
-//   mongoose.model('games', GamesSchema);
+// app.get('api/games', function(req, res) {
+//   console.log('Successful GET request!');
+//   // gameController.allGames(req, res);
 // });
+
+app.post('/', function(req, res, next) {
+  console.log('request: ', req.body);
+  if(req.body.platform === 'pc') {
+    req.body.platformImg = 'https://dl.dropboxusercontent.com/u/6695849/mvp/pc.png';
+  } else if (req.body.platform === 'playstation') {
+    req.body.platformImg = 'https://dl.dropboxusercontent.com/u/6695849/mvp/playstation.png';
+  } else if (req.body.platform === 'xbox') {
+    req.body.platformImg = 'https://dl.dropboxusercontent.com/u/6695849/mvp/xbox.png';
+  } else if (req.body.platform === 'switch') {
+    req.body.platformImg = 'https://dl.dropboxusercontent.com/u/6695849/mvp/switch.png';
+  }
+  gameData.exampleGames.push(req.body);
+  console.log('gameData: ', gameData.exampleGames);
+
+  // mongoose.model('games', GamesSchema);
+  // post game then run the get request
+});
 
 // start listening to requests on port 3000
 app.listen(app.get('port'), function() {
