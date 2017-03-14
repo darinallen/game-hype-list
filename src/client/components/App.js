@@ -1,10 +1,8 @@
 import React from 'react';
 import exampleGames from '../../data/exampleGamesData';
-import GameList from './GameList.js';
+import GameList from './GameList';
 
-console.log('exampleGames: ', exampleGames);
-console.log('GameList: ', GameList);
-
+console.log('GameList Component: ', GameList);
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -13,16 +11,14 @@ class App extends React.Component {
     };
     this.name = 'Darin';
   }
-
   render() {
-    console.log(this.props);
+    console.log('gameList: ', this.state.gameList);
     return (
       <div>
         <h1>Video Game Hype List</h1>
-        {/* <GameList games={this.state.gameList} /> */}
+        <GameList games={this.state.gameList} />
       </div>
     );
   }
 }
-
 export default App;

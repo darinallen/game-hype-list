@@ -6,6 +6,7 @@ var GameList = ({games}) => (
     {games.map(game =>
       <GameListEntry
         game={game}
+        key={game.id}
       />
     )}
   </div>
