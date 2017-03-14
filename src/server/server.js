@@ -7,6 +7,7 @@ var Game = require('./games/gameModel.js');
 
 var app = express();
 
+// Mongo ahoy!
 // connect to mongo database named "game-hype-list"
 // mongoose.connect('mongodb://localhost/game-hype-list');
 // var db = mongoose.connection;
