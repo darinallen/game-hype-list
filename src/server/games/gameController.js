@@ -7,6 +7,7 @@ var findAllGames = Q.nbind(Game.find, Game);
 module.exports = {
 
   allGames: function(req, res, next) {
+    console.log('all games req.body: ', req.body);
     findAllGames({})
       .then(function(games) {
         res.json(games);

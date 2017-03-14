@@ -8,19 +8,19 @@ var gameData = require('../data/exampleGamesData.js');
 var app = express();
 
 // Create a sample game
-Game.create({
-  id: 6,
-  title: 'Xenoblade Chronicles 2',
-  date: 'Fall, 2017',
-  platform: 'switch',
-  platformImg: 'https://dl.dropboxusercontent.com/u/6695849/mvp/switch.png'
-}, function (err, game) {
-  if (err) {
-    console.log('err: ', err)
-  } else {
-    console.log('game: ', game)
-  }
-});
+// Game.create({
+//   id: 6,
+//   title: 'Xenoblade Chronicles 2',
+//   date: 'Fall, 2017',
+//   platform: 'switch',
+//   platformImg: 'https://dl.dropboxusercontent.com/u/6695849/mvp/switch.png'
+// }, function (err, game) {
+//   if (err) {
+//     console.log('err: ', err)
+//   } else {
+//     console.log('game: ', game)
+//   }
+// });
 
 
 // Mongo ahoy!
@@ -71,10 +71,30 @@ app.post('/', function(req, res, next) {
   // gameData.exampleGames.push(req.body);
   // console.log('gameData: ', gameData.exampleGames);
 
-  gameController.addGame(req, res, function() {
-    gameController.allGames(req, res, function() {
-      console.log('req.body: ', req.body);
-    });
+  Game.create({
+    title: req.body.title,
+    date: req.body.date,
+    platform: req.body.platform,
+    platformImg: (function() {
+      if(req.body.platform === 'pc') {
+        return 'https://dl.dropboxusercontent.com/u/6695849/mvp/pc.png';
+      } else if (req.body.platform === 'playstation') {
+        return 'https://dl.dropboxusercontent.com/u/6695849/mvp/playstation.png';
+      } else if (req.body.platform === 'xbox') {
+        return 'https://dl.dropboxusercontent.com/u/6695849/mvp/xbox.png';
+      } else if (req.body.platform === 'switch') {
+        return 'https://dl.dropboxusercontent.com/u/6695849/mvp/switch.png';
+      }
+    })()
+  }, function (err, game) {
+    if (err) {
+      console.log('err: ', err);
+    } else {
+      console.log('game added: ', game);
+      gameController.allGames(req, res, function() {
+        console.log('all games req.body: ', req.body);
+      });
+    }
   });
 
   // post game then run the get request
