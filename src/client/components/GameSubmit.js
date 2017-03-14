@@ -1,3 +1,5 @@
+var React = require('react');
+
 var GameSubmit = (props) => (
   <div className="game-submit">
     <input

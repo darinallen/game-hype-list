@@ -1,10 +1,12 @@
 var React = require('react');
+var exampleGames = require('../../data/exampleGameData');
+console.log(exampleGames);
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      gameList: exampleGames
     };
     this.name = 'Darin';
   }
@@ -13,9 +15,8 @@ class App extends React.Component {
     console.log(this.props);
     return (
       <div>
-        <div>
-          <h1>This is {this.name}'s React app!</h1>
-        </div>
+        <h1>Video Game Hype List</h1>
+        <GameList games={this.state.gameList} />
       </div>
     );
   }

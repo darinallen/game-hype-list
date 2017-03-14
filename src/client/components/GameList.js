@@ -1,3 +1,5 @@
+var React = require('react');
+
 var GameList = ({games}) => (
   <div className="game-list">
     {games.map(game =>

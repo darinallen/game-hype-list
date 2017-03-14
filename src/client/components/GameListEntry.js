@@ -1,3 +1,5 @@
+var React = require('react');
+
 var VideoListEntry = ({game}) => (
   <div className="game-list-entry">
     <div className="game-title">{game.title}</div>
