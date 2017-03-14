@@ -10,7 +10,6 @@ class App extends React.Component {
     this.state = {
       gameList: exampleGames
     };
-    this.name = 'Darin';
   }
   render() {
     console.log('gameList: ', this.state.gameList);

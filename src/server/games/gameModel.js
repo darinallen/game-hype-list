@@ -1,5 +1,5 @@
-import Q from 'q';
-import mongoose from 'mongoose';
+var Q = require('q');
+var mongoose = require ('mongoose');
 
 var GamesSchema = new mongoose.Schema({
   title: {
@@ -20,4 +20,4 @@ var GamesSchema = new mongoose.Schema({
 
 var gamesSchema = mongoose.model('games', GamesSchema);
 
-export { gamesSchema };
+modules.export = gamesSchema;
