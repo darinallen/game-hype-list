@@ -14,19 +14,31 @@ class App extends React.Component {
 
   handleSubmit: function(event) {
     event.preventDefault();
-    axios.post('/')
-      .then(function(result) {
-        alert('Working!');
-        console.log(result);
-        this.setState({gameList: result});
+
+    $.ajax({
+      type: "POST",
+      url: '/',
+      success: function(error, result) {
+        console.log('client post response: ', result);
+        this.setState({gameList: result})
+      },
+      failure: function(error, result) {
+        console.log('error: ', error);
+      }
+    });
+
+    // axios.post('/')
+    //   .then(function(result) {
+    //     alert('Working!');
+    //     console.log(result);
+    //     this.setState({gameList: result});
   });
-  }
 
   render() {
     return (
       <div>
         <h1>Video Game Hype List</h1>
-        <GameSubmit onSubmit={this.handleSubmit.bind(this)}/>
+        <GameSubmit handleSubmit={this.handleSubmit.bind(this)}/>
         <GameList games={this.state.gameList} />
       </div>
     );

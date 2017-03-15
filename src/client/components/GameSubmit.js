@@ -1,7 +1,7 @@
 import React from 'react';
 var gameData = require('../../data/exampleGamesData.js');
 
-var GameSubmit = (props) => (
+var GameSubmit = ({handleSubmit}) => (
   <form className="game-submit-form" method="post">
     <fieldset>
       <legend>Enter a Game You Are Hyped to Play!</legend>
@@ -16,7 +16,7 @@ var GameSubmit = (props) => (
         <option value="xbox">Xbox One</option>
         <option value="switch">Nintendo Switch</option>
       </select><br /><br />
-      <input type="submit" value="Submit" />
+      <input onSubmit={() => {handleSubmit();}} type="submit" value="Submit" />
     </fieldset>
   </form>
 );
