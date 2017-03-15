@@ -52,10 +52,12 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '/../../build/index.html'));
 });
 
-// app.get('api/games', function(req, res) {
-//   console.log('Successful GET request!');
-//   // gameController.allGames(req, res);
-// });
+app.get('api/games', function(req, res, next) {
+  Game.find({}, function(err, result) {
+    console.log('findAll result: ', result);
+    res.send(result);
+  });
+});
 
 app.post('/', function(req, res, next) {
   // console.log('request: ', req.body);
@@ -91,8 +93,9 @@ app.post('/', function(req, res, next) {
       console.log('err: ', err);
     } else {
       console.log('game added: ', game);
-      gameController.allGames(req, res, function() {
-        console.log('all games req.body: ', req.body);
+      Game.find({}, function(err, result) {
+        console.log('findAll result: ', result);
+        res.send(result);
       });
     }
   });

@@ -3,11 +3,11 @@ import GameListEntry from './GameListEntry.js';
 
 var GameList = ({games}) => (
   <div className="game-list">
-    {games.map(game =>
+    {games.map(game => (
       <GameListEntry
         game={game}
         key={game.id}
-      />
+      />)
     )}
   </div>
 );
