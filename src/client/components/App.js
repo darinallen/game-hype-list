@@ -3,7 +3,6 @@ var gameData = require('../../data/exampleGamesData');
 import GameList from './GameList';
 import GameSubmit from './GameSubmit';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -12,21 +11,34 @@ class App extends React.Component {
     };
   }
 
-  handleSubmit() {
-    event.preventDefault();
-    $.ajax({
-      type: "POST",
-      url: '/',
-      success: function(error, result) {
-        console.log('client post response: ', result);
-        this.setState({gameList: result})
-      },
-      failure: function(error, result) {
-        console.log('error: ', error);
-      }
-    });
+  componentDidMount() {
+    var _this = this;
+    this.serverRequest =
+      axios
+        .get('/games')
+        .then(function(result) {
+          console.log('componentDidMount result.data: ', result.data);
+          _this.setState({
+            gameList: result.data
+          });
+        })
   }
 
+  // componentWillUnmount() {
+  //   this.serverRequest.abort();
+  // }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    axios
+      .post('/')
+      .then(function(result) {
+        console.log('handleSubmit result.data: ', result.data);
+        _this.setState({
+          gameList: result.data
+        });
+      })
+  }
 
   render() {
     return (
@@ -39,35 +51,3 @@ class App extends React.Component {
   }
 }
 export default App;
-
-
-// set state of gameList
-
-
-
-
-// import React from 'react';
-// var gameData = require('../../data/exampleGamesData');
-// import GameList from './GameList';
-// import GameSubmit from './GameSubmit';
-//
-//
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       gameList: gameData.exampleGames,
-//     };
-//   }
-//
-//   render() {
-//     return (
-//       <div>
-//         <h1>Video Game Hype List</h1>
-//         <GameSubmit />
-//         <GameList games={this.state.gameList} />
-//       </div>
-//     );
-//   }
-// }
-// export default App;

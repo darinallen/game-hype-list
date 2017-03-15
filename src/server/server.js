@@ -7,33 +7,18 @@ var Game = require('./games/gameModel.js');
 var gameData = require('../data/exampleGamesData.js');
 var app = express();
 
-// Create a sample game
 // Game.create({
-//   id: 6,
-//   title: 'Xenoblade Chronicles 2',
-//   date: 'Fall, 2017',
-//   platform: 'switch',
+//   title: 'Super Mario Odyssey',
+//   date: 'Fall 2017',
+//   platform: 'Switch',
 //   platformImg: 'https://dl.dropboxusercontent.com/u/6695849/mvp/switch.png'
-// }, function (err, game) {
-//   if (err) {
-//     console.log('err: ', err)
-//   } else {
-//     console.log('game: ', game)
-//   }
 // });
 
-
-// Mongo ahoy!
 // connect to mongo database named "game-hype-list"
 if(app.get('env') === 'development') {
   mongoose.connect('mongodb://localhost/game-hype-list');
   var db = mongoose.connection;
 }
-
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', function() {
-//   // we're connected!
-// });
 
 // Set what we are listening on.
 app.set('port', process.env.PORT || 3000);
@@ -52,7 +37,7 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '/../../build/index.html'));
 });
 
-app.get('api/games', function(req, res, next) {
+app.get('/games', function(req, res, next) {
   Game.find({}, function(err, result) {
     console.log('findAll result: ', result);
     res.send(result);
@@ -60,18 +45,6 @@ app.get('api/games', function(req, res, next) {
 });
 
 app.post('/', function(req, res, next) {
-  // console.log('request: ', req.body);
-  // if(req.body.platform === 'pc') {
-  //   req.body.platformImg = 'https://dl.dropboxusercontent.com/u/6695849/mvp/pc.png';
-  // } else if (req.body.platform === 'playstation') {
-  //   req.body.platformImg = 'https://dl.dropboxusercontent.com/u/6695849/mvp/playstation.png';
-  // } else if (req.body.platform === 'xbox') {
-  //   req.body.platformImg = 'https://dl.dropboxusercontent.com/u/6695849/mvp/xbox.png';
-  // } else if (req.body.platform === 'switch') {
-  //   req.body.platformImg = 'https://dl.dropboxusercontent.com/u/6695849/mvp/switch.png';
-  // }
-  // gameData.exampleGames.push(req.body);
-  // console.log('gameData: ', gameData.exampleGames);
 
   Game.create({
     title: req.body.title,
@@ -100,7 +73,6 @@ app.post('/', function(req, res, next) {
     }
   });
 
-  // post game then run the get request
 });
 
 // start listening to requests on port 3000

@@ -6,7 +6,7 @@ var GameListEntry = ({game}) => (
         <img src= {game.platformImg}/>
       </div>
       <div className="game-title">{game.title}</div>
-      <div className="game-release-date">{game.releaseDate}</div>
+      <div className="game-release-date">{game.date}</div>
     </div>
   </div>
 );
