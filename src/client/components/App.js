@@ -12,27 +12,21 @@ class App extends React.Component {
     };
   }
 
-  // handleSubmit: function(event) {
-  //   event.preventDefault();
-  //
-  //   // $.ajax({
-  //   //   type: "POST",
-  //   //   url: '/',
-  //   //   success: function(error, result) {
-  //   //     console.log('client post response: ', result);
-  //   //     this.setState({gameList: result})
-  //   //   },
-  //   //   failure: function(error, result) {
-  //   //     console.log('error: ', error);
-  //   //   }
-  //   // });
-  //
-  //   axios.post('/')
-  //     .then(function(result) {
-  //       alert('Working!');
-  //       console.log(result);
-  //       this.setState({gameList: result});
-  // }
+  handleSubmit() {
+    event.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: '/',
+      success: function(error, result) {
+        console.log('client post response: ', result);
+        this.setState({gameList: result})
+      },
+      failure: function(error, result) {
+        console.log('error: ', error);
+      }
+    });
+  }
+
 
   render() {
     return (
