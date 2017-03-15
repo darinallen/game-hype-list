@@ -32,7 +32,7 @@ class App extends React.Component {
     //     alert('Working!');
     //     console.log(result);
     //     this.setState({gameList: result});
-  });
+  }
 
   render() {
     return (
